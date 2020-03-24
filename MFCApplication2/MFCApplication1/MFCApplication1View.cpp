@@ -48,7 +48,7 @@ BOOL CMFCApplication1View::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMFCApplication1View 绘图
 
-void CMFCApplication1View::OnDraw(CDC* /*pDC*/)
+void CMFCApplication1View::OnDraw(CDC* pDC)
 {
 	CMFCApplication1Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -56,6 +56,8 @@ void CMFCApplication1View::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+	this->GetClientRect(ClientRect);
+	pDC->Ellipse(ClientRect);
 }
 
 
