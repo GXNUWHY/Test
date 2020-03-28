@@ -30,6 +30,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication3View, CView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
+	ON_COMMAND(ID_32775, &CMFCApplication3View::OnShowBitmap)
 END_MESSAGE_MAP()
 
 // CMFCApplication3View 构造/析构
@@ -67,12 +68,11 @@ void CMFCApplication3View::OnDraw(CDC* pDC)
 
 	// TODO: 在此处为本机数据添加绘制代码
 
-	CDC MemDC;
+	/*CDC MemDC;
 	MemDC.CreateCompatibleDC(NULL);
 	MemDC.SelectObject(m_Bitmap);
 
-	pDC->BitBlt(0, 0, m_nWidth, m_nHeight,&MemDC , 0, 0, SRCCOPY);
-
+	pDC->BitBlt(0, 0, m_nWidth, m_nHeight,&MemDC , 0, 0, SRCCOPY);*/
 
 	if (flag == 1) {
 		switch (mode) {
@@ -163,7 +163,7 @@ void CMFCApplication3View::OnMouseMove(UINT nFlags, CPoint point)
 	//dc.SelectStockObject(NULL_BRUSH);
 
 	pointarr = point;
-	if (flag == 1) {
+	if (flag == 1 && mode != 0) {
 		Invalidate();
 	}
 	
@@ -182,4 +182,15 @@ void CMFCApplication3View::OnLButtonUp(UINT nFlags, CPoint point)
 
 
 	CView::OnLButtonUp(nFlags, point);
+}
+
+void CMFCApplication3View::OnShowBitmap()
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC MemDC;
+	MemDC.CreateCompatibleDC(NULL);
+	MemDC.SelectObject(m_Bitmap);
+
+	CClientDC dc(this);
+	dc.BitBlt(0, 0, m_nWidth, m_nHeight, &MemDC, 0, 0, SRCCOPY);
 }
