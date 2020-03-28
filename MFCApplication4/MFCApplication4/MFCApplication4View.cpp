@@ -26,6 +26,8 @@ BEGIN_MESSAGE_MAP(CMFCApplication4View, CView)
 	ON_COMMAND(ID_DDALINE, &CMFCApplication4View::OnDdaline)
 	ON_COMMAND(ID_MIDPOINTLINE, &CMFCApplication4View::OnMidpointline)
 	ON_COMMAND(ID_BRESENHAMLINE, &CMFCApplication4View::OnBresenhamline)
+	ON_COMMAND(ID_DRAWM, &CMFCApplication4View::OnDrawm)
+	ON_COMMAND(ID_DRAWJIONG, &CMFCApplication4View::OnDrawjiong)
 END_MESSAGE_MAP()
 
 // CMFCApplication4View 构造/析构
@@ -180,11 +182,163 @@ void CMFCApplication4View::OnBresenhamline()
 			pDC->SetPixel(x, y, c);
 			f -= 2 * deltax;
 		}
-		else {
+		 {
 			if (interchange == 1) y += s2;
 			else x += s1;
 			pDC->SetPixel(x, y, c);
 			f += 2 * deltay;
 		}
 	}
+}
+
+
+void CMFCApplication4View::CustomizeBresenhamline(int x1, int y1, int x2, int y2,int c)
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC* pDC = GetDC();
+
+	int i, s1, s2, interchange;
+	float x, y, deltax, deltay, e, temp;
+	int f;
+	x = x1;
+	y = y1;
+	deltax = abs(x2 - x1);
+	deltay = abs(y2 - y1);
+	if (x2 - x1 >= 0) s1 = 1;
+	else s1 = -1;
+
+	if (y2 - y1 >= 0) s2 = 1;
+	else s2 = -1;
+
+	if (deltay > deltax) {
+		temp = deltax;
+		deltax = deltay;
+		deltay = temp;
+		interchange = 1;
+	}
+	else {
+		interchange = 0;
+	}
+	f = 2 * deltay - deltax;
+	pDC->SetPixel(x, y, c);
+
+	for (i = 1; i <= deltax; ++i) {
+		if (f >= 0) {
+			if (interchange == 1) x += s1;
+			else y += s2;
+			pDC->SetPixel(x, y, c);
+			f -= 2 * deltax;
+		}
+
+		{
+			if (interchange == 1) y += s2;
+			else x += s1;
+			pDC->SetPixel(x, y, c);
+			f += 2 * deltay;
+		}
+	}
+}
+
+
+
+void CMFCApplication4View::OnDrawm()
+{
+	// TODO: 在此添加命令处理程序代码
+	int x1 = 100, y1 = 50;
+	int x2 = 100, y2 = 200;
+	int color = RGB(255, 0, 0);
+
+	for (int num = 0; num <= 20; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	x1 = 100, y1 = 50;
+	x2 = 200, y2 = 200;
+	for (int num = 0; num <= 20; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	x2 = 200, y2 = 200;
+	x1 = 300, y1 = 50;
+	for (int num = 0; num <= 20; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	x1 = 300, y1 = 50;
+	x2 = 300, y2 = 200;
+	for (int num = 0; num <= 20; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+}
+
+
+void CMFCApplication4View::OnDrawjiong()
+{
+	// TODO: 在此添加命令处理程序代码
+	int x1 = 0, y1 = 0;
+	int x2 = 0, y2 = 100;
+	int color = RGB(0, 0, 0);
+	int width = 3;
+
+	//1
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	//2
+	x1 = 0, y1 = 100;
+	x2 = 100, y2 = 100;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1, y1 + num, x2, y2 + num, color);
+	}
+
+	//3
+	x2 = 100, y2 = 100;
+	x1 = 100, y1 = 0;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	//4
+	x1 = 0, y1 = 0;
+	x2 = 100, y2 = 0;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1, y1 + num, x2, y2 + num, color);
+	}
+
+	//5
+	x1 = 0, y1 = 33;
+	x2 = 33, y2 = 0;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1, y1 + num, x2 + num, y2, color);
+	}
+
+	//6
+	x1 = 66, y1 = 0;
+	x2 = 100, y2 = 34;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2, y2 - num, color);
+	}
+
+	//7
+	x1 = 33, y1 = 100;
+	x2 = 33, y2 = 66;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
+	//8
+	x1 = 33, y1 = 66;
+	x2 = 66, y2 = 66;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1, y1 + num, x2, y2 + num, color);
+	}
+
+	//9
+	x1 = 66, y1 = 66;
+	x2 = 66, y2 = 100;
+	for (int num = 0; num <= width; ++num) {
+		CustomizeBresenhamline(x1 + num, y1, x2 + num, y2, color);
+	}
+
 }

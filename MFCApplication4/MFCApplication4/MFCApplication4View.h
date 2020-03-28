@@ -17,7 +17,7 @@ public:
 
 // 操作
 public:
-
+	virtual void CustomizeBresenhamline(int x1, int y1, int x2, int y2, int c);
 // 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图
@@ -41,6 +41,8 @@ public:
 	afx_msg void OnDdaline();
 	afx_msg void OnMidpointline();
 	afx_msg void OnBresenhamline();
+	afx_msg void OnDrawm();
+	afx_msg void OnDrawjiong();
 };
 
 #ifndef _DEBUG  // MFCApplication4View.cpp 中的调试版本
