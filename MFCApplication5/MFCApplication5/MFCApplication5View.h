@@ -17,7 +17,8 @@ public:
 
 // 操作
 public:
-
+	virtual void Bresenhamcircle(int xc, int yc, int radius, int c);
+	virtual void Bresenhamcircle2(int xc, int yc, int radius, int c);
 // 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图
@@ -40,6 +41,9 @@ protected:
 public:
 	afx_msg void OnMidpointcircle();
 	afx_msg void OnBresenhamcircle();
+	afx_msg void OnDrawwind();
+	afx_msg void OnDrawwave();
+	afx_msg void OnDrawcircir();
 };
 
 #ifndef _DEBUG  // MFCApplication5View.cpp 中的调试版本

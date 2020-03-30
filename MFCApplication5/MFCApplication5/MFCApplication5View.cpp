@@ -25,6 +25,8 @@ IMPLEMENT_DYNCREATE(CMFCApplication5View, CView)
 BEGIN_MESSAGE_MAP(CMFCApplication5View, CView)
 	ON_COMMAND(ID_MIDPOINTCIRCLE, &CMFCApplication5View::OnMidpointcircle)
 	ON_COMMAND(ID_BRESENHAMCIRCLE, &CMFCApplication5View::OnBresenhamcircle)
+	ON_COMMAND(ID_DRAWWAVE, &CMFCApplication5View::OnDrawwave)
+	ON_COMMAND(ID_DRAWCIRCIR, &CMFCApplication5View::OnDrawcircir)
 END_MESSAGE_MAP()
 
 // CMFCApplication5View 构造/析构
@@ -159,4 +161,141 @@ void CMFCApplication5View::OnBresenhamcircle()
 		pDC->SetPixel((xc + y), (yc - x), c);
 		pDC->SetPixel((xc - y), (yc - x), c);
 	}
+}
+
+void CMFCApplication5View::Bresenhamcircle(int xc , int yc, int radius, int c)
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC* pDC = GetDC();
+	int x = 0, y = radius, p = 3 - 2 * radius;
+
+	while (x < y) {
+		pDC->SetPixel((xc + x), (yc + y), c);
+		pDC->SetPixel((xc - x), (yc + y), c);
+		pDC->SetPixel((xc + x), (yc - y), c);
+		pDC->SetPixel((xc - x), (yc - y), c);
+		pDC->SetPixel((xc + y), (yc + x), c);
+		pDC->SetPixel((xc - y), (yc + x), c);
+		pDC->SetPixel((xc + y), (yc - x), c);
+		pDC->SetPixel((xc - y), (yc - x), c);
+
+		if (p < 0) {
+			p += 4 * x + 6;
+		}
+		else {
+			p += 4 * (x - y) + 10;
+			--y;
+		}
+		++x;
+	}
+
+	if (x == y) {
+		pDC->SetPixel((xc + x), (yc + y), c);
+		pDC->SetPixel((xc - x), (yc + y), c);
+		pDC->SetPixel((xc + x), (yc - y), c);
+		pDC->SetPixel((xc - x), (yc - y), c);
+		pDC->SetPixel((xc + y), (yc + x), c);
+		pDC->SetPixel((xc - y), (yc + x), c);
+		pDC->SetPixel((xc + y), (yc - x), c);
+		pDC->SetPixel((xc - y), (yc - x), c);
+	}
+}
+
+void CMFCApplication5View::Bresenhamcircle2(int xc, int yc, int radius, int c)
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC* pDC = GetDC();
+	int x = 0, y = radius, p = 3 - 2 * radius;
+
+	while (x < y) {
+		//pDC->SetPixel((xc + x), (yc + y), c);
+		//pDC->SetPixel((xc - x), (yc + y), c);
+		//pDC->SetPixel((xc + x), (yc - y), c);
+		//pDC->SetPixel((xc - x), (yc - y), c);
+		//pDC->SetPixel((xc + y), (yc + x), c);
+		//pDC->SetPixel((xc - y), (yc + x), c);
+		//pDC->SetPixel((xc + y), (yc - x), c);
+		//pDC->SetPixel((xc - y), (yc - x), c);
+
+		Bresenhamcircle((xc + x), (yc + y), radius , c);
+		Bresenhamcircle((xc - x), (yc + y), radius , c);
+		Bresenhamcircle((xc + x), (yc - y), radius , c);
+		Bresenhamcircle((xc - x), (yc - y), radius , c);
+		Bresenhamcircle((xc + y), (yc + x), radius , c);
+		Bresenhamcircle((xc - y), (yc + x), radius , c);
+		Bresenhamcircle((xc + y), (yc - x), radius , c);
+		Bresenhamcircle((xc - y), (yc - x), radius , c);
+
+		if (p < 0) {
+			p += 4 * x + 6;
+		}
+		else {
+			p += 4 * (x - y) + 10;
+			--y;
+		}
+		++x;
+		c = (c + 12777215) % 16777215;
+	}
+
+	if (x == y) {
+		//pDC->SetPixel((xc + x), (yc + y), c);
+		//pDC->SetPixel((xc - x), (yc + y), c);
+		//pDC->SetPixel((xc + x), (yc - y), c);
+		//pDC->SetPixel((xc - x), (yc - y), c);
+		//pDC->SetPixel((xc + y), (yc + x), c);
+		//pDC->SetPixel((xc - y), (yc + x), c);
+		//pDC->SetPixel((xc + y), (yc - x), c);
+		//pDC->SetPixel((xc - y), (yc - x), c);
+
+		Bresenhamcircle((xc + x), (yc + y), radius / 10, c);
+		Bresenhamcircle((xc - x), (yc + y), radius / 10, c);
+		Bresenhamcircle((xc + x), (yc - y), radius / 10, c);
+		Bresenhamcircle((xc - x), (yc - y), radius / 10, c);
+		Bresenhamcircle((xc + y), (yc + x), radius / 10, c);
+		Bresenhamcircle((xc - y), (yc + x), radius / 10, c);
+		Bresenhamcircle((xc + y), (yc - x), radius / 10, c);
+		Bresenhamcircle((xc - y), (yc - x), radius / 10, c);
+	}
+}
+
+
+void CMFCApplication5View::OnDrawwave()
+{
+	// TODO: 在此添加命令处理程序代码
+	int xc;
+	int yc;
+	int radius;
+	int c = 0;
+
+	//up
+	for (xc = 500, yc = 400, radius = 1; radius <= 100; yc -= 10, radius += 3) {
+		Bresenhamcircle(xc, yc, radius, c);
+	}
+
+	//down
+	for (xc = 500, yc = 400, radius = 1; radius <= 100; yc += 10, radius += 3) {
+		Bresenhamcircle(xc, yc, radius, c);
+	}
+
+	//left
+	for (xc = 500, yc = 400, radius = 1; radius <= 100; xc -= 10, radius += 3) {
+		Bresenhamcircle(xc, yc, radius, c);
+	}
+
+	//right
+	for (xc = 500, yc = 400, radius = 1; radius <= 100; xc += 10, radius += 3) {
+		Bresenhamcircle(xc, yc, radius, c);
+	}
+
+}
+
+
+void CMFCApplication5View::OnDrawcircir()
+{
+	// TODO: 在此添加命令处理程序代码
+	int xc;
+	int yc;
+	int radius;
+	int c = 0;
+	Bresenhamcircle2(350, 250, 100, c);
 }
