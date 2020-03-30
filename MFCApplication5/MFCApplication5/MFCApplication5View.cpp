@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication5View, CView)
 	ON_COMMAND(ID_BRESENHAMCIRCLE, &CMFCApplication5View::OnBresenhamcircle)
 	ON_COMMAND(ID_DRAWWAVE, &CMFCApplication5View::OnDrawwave)
 	ON_COMMAND(ID_DRAWCIRCIR, &CMFCApplication5View::OnDrawcircir)
+	ON_COMMAND(ID_DRAWCIR, &CMFCApplication5View::OnDrawcir)
 END_MESSAGE_MAP()
 
 // CMFCApplication5View 构造/析构
@@ -201,6 +202,7 @@ void CMFCApplication5View::Bresenhamcircle(int xc , int yc, int radius, int c)
 	}
 }
 
+//填充颜色
 void CMFCApplication5View::Bresenhamcircle2(int xc, int yc, int radius, int c)
 {
 	// TODO: 在此添加命令处理程序代码
@@ -208,14 +210,6 @@ void CMFCApplication5View::Bresenhamcircle2(int xc, int yc, int radius, int c)
 	int x = 0, y = radius, p = 3 - 2 * radius;
 
 	while (x < y) {
-		//pDC->SetPixel((xc + x), (yc + y), c);
-		//pDC->SetPixel((xc - x), (yc + y), c);
-		//pDC->SetPixel((xc + x), (yc - y), c);
-		//pDC->SetPixel((xc - x), (yc - y), c);
-		//pDC->SetPixel((xc + y), (yc + x), c);
-		//pDC->SetPixel((xc - y), (yc + x), c);
-		//pDC->SetPixel((xc + y), (yc - x), c);
-		//pDC->SetPixel((xc - y), (yc - x), c);
 
 		Bresenhamcircle((xc + x), (yc + y), radius , c);
 		Bresenhamcircle((xc - x), (yc + y), radius , c);
@@ -238,14 +232,6 @@ void CMFCApplication5View::Bresenhamcircle2(int xc, int yc, int radius, int c)
 	}
 
 	if (x == y) {
-		//pDC->SetPixel((xc + x), (yc + y), c);
-		//pDC->SetPixel((xc - x), (yc + y), c);
-		//pDC->SetPixel((xc + x), (yc - y), c);
-		//pDC->SetPixel((xc - x), (yc - y), c);
-		//pDC->SetPixel((xc + y), (yc + x), c);
-		//pDC->SetPixel((xc - y), (yc + x), c);
-		//pDC->SetPixel((xc + y), (yc - x), c);
-		//pDC->SetPixel((xc - y), (yc - x), c);
 
 		Bresenhamcircle((xc + x), (yc + y), radius / 10, c);
 		Bresenhamcircle((xc - x), (yc + y), radius / 10, c);
@@ -257,8 +243,9 @@ void CMFCApplication5View::Bresenhamcircle2(int xc, int yc, int radius, int c)
 		Bresenhamcircle((xc - y), (yc - x), radius / 10, c);
 	}
 }
+//填充颜色
 
-
+//绘制波
 void CMFCApplication5View::OnDrawwave()
 {
 	// TODO: 在此添加命令处理程序代码
@@ -267,35 +254,51 @@ void CMFCApplication5View::OnDrawwave()
 	int radius;
 	int c = 0;
 
-	//up
-	for (xc = 500, yc = 400, radius = 1; radius <= 100; yc -= 10, radius += 3) {
-		Bresenhamcircle(xc, yc, radius, c);
-	}
-
-	//down
-	for (xc = 500, yc = 400, radius = 1; radius <= 100; yc += 10, radius += 3) {
-		Bresenhamcircle(xc, yc, radius, c);
-	}
-
-	//left
-	for (xc = 500, yc = 400, radius = 1; radius <= 100; xc -= 10, radius += 3) {
-		Bresenhamcircle(xc, yc, radius, c);
-	}
-
 	//right
-	for (xc = 500, yc = 400, radius = 1; radius <= 100; xc += 10, radius += 3) {
+	for (xc = 300, yc = 200, radius = 1; radius <= 100; xc += 10, radius += 3) {
 		Bresenhamcircle(xc, yc, radius, c);
 	}
 
 }
+//绘制波
 
 
 void CMFCApplication5View::OnDrawcircir()
 {
 	// TODO: 在此添加命令处理程序代码
-	int xc;
-	int yc;
-	int radius;
 	int c = 0;
 	Bresenhamcircle2(350, 250, 100, c);
 }
+
+
+//绘制环
+void CMFCApplication5View::OnDrawcir()
+{
+	// TODO: 在此添加命令处理程序代码
+	CClientDC dc(this);
+	int x0 = 300;
+	int y0 = 200;
+	int xc;
+	int yc;
+	int radius = 100;
+	int c = 0;
+	float PI = 3.1415;
+	int angle = 0;
+	int dy = sin(45.0 / 180 * PI) * radius;
+	int dx = cos(45.0 / 180 * PI) * radius;
+
+	CString s;
+	//s.Format(_T("%f"), angle);
+	//dc.TextOutW(200, 200, s);
+
+
+	for (xc = x0 + radius, yc = y0; angle <= 360; angle += 2) {
+
+		Bresenhamcircle(xc, yc, radius/2 , RGB(147,181,207));
+
+		xc = x0 + cos((float)angle / 180 * PI) * radius;
+		yc = y0 + sin((float)angle / 180 * PI) * radius;
+	}
+
+}
+//绘制环

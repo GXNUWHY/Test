@@ -93,7 +93,7 @@ void CMFCApplication6View::OnMidpointellipse()
 	int x, y;
 	x = 0;
 	y = b;
-	d1 = b * b + a * a*(-b + 0.25);
+	d1 = b * b + a * a * (-b + 0.25);
 	pDC->SetPixel(x + 300, y + 200, c);
 	pDC->SetPixel(-x + 300, y + 200, c);
 	pDC->SetPixel(x + 300, -y + 200, c);

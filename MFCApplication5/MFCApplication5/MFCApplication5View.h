@@ -44,6 +44,7 @@ public:
 	afx_msg void OnDrawwind();
 	afx_msg void OnDrawwave();
 	afx_msg void OnDrawcircir();
+	afx_msg void OnDrawcir();
 };
 
 #ifndef _DEBUG  // MFCApplication5View.cpp 中的调试版本
