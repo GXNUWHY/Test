@@ -17,7 +17,7 @@ public:
 
 // 操作
 public:
-
+	virtual void Midpointellipse(int a, int b, int xc, int yc);
 // 重写
 public:
 	virtual void OnDraw(CDC* pDC);  // 重写以绘制该视图
@@ -39,6 +39,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnMidpointellipse();
+	afx_msg void OnPic1();
 };
 
 #ifndef _DEBUG  // MFCApplication6View.cpp 中的调试版本
