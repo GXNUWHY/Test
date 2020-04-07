@@ -135,6 +135,7 @@ void CMFCApplication8View::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 void CMFCApplication8View::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	
 	x = point.x;
 	y = point.y;
 
