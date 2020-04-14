@@ -12,7 +12,7 @@
 
 #include "MFCApplication11Doc.h"
 #include "MFCApplication11View.h"
-
+#include "DRAW.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -25,6 +25,7 @@ IMPLEMENT_DYNCREATE(CMFCApplication11View, CView)
 BEGIN_MESSAGE_MAP(CMFCApplication11View, CView)
 	ON_COMMAND(ID_32771, &CMFCApplication11View::On32771)
 	ON_COMMAND(ID_32772, &CMFCApplication11View::On32772)
+	ON_COMMAND(ID_32773, &CMFCApplication11View::On32773)
 END_MESSAGE_MAP()
 
 // CMFCApplication11View 构造/析构
@@ -104,6 +105,120 @@ void CMFCApplication11View::On32771()
 	// SeedFill(spt,s_point,pDC);
 
 }
+
+void CMFCApplication11View::On32773()
+{
+	// TODO: 在此添加命令处理程序代码
+	DRAW point;
+	CDC *pDC = GetDC();
+	CPen newpen(PS_SOLID, 1, RGB(255, 0, 0));
+	CPen *old = pDC->SelectObject(&newpen);
+	int N = 4;
+	CPoint spt[10];
+	if (point.DoModal() == IDOK) {
+		
+		spt[0].x = point.x1;spt[0].y = point.y1;
+		spt[1].x = point.x2;spt[1].y = point.y2;
+		spt[2].x = point.x3;spt[2].y = point.y3;
+		spt[3].x = point.x1;spt[3].y = point.y1;
+
+	}
+	pDC->Polyline(spt, 4);
+	ScanFill2(spt, pDC, N);
+	
+}
+
+void CMFCApplication11View::ScanFill2(CPoint spt[], CDC *pDC, int N)
+{
+	int j, k, s = 0;
+	int p[10];  //交点x坐标值
+	int pmin, pmax = 0;
+	pmin = spt[0].y;
+	CPen newpen(PS_SOLID, 1, RGB(0, 255, 0));
+	pDC->SelectObject(&newpen);
+	for (int i = 0;i <= N - 2;i++)  //建立新边表NET
+	{  //1
+		edge[i].dx = (float)(spt[i + 1].x - spt[i].x) / (spt[i + 1].y - spt[i].y);
+		if (spt[i].y <= spt[i + 1].y)
+		{
+			edge[i].num = i;
+			edge[i].ymin = spt[i].y;
+			edge[i].ymax = spt[i + 1].y;
+			edge[i].xmin = (float)spt[i].x;
+			edge[i].xmax = (float)spt[i + 1].x;
+			if (pmax < spt[i + 1].y)
+				pmax = spt[i + 1].y;
+			if (pmin > spt[i].y)
+				pmin = spt[i].y;
+		}
+		else
+		{
+			edge[i].num = i;
+			edge[i].ymin = spt[i + 1].y;
+			edge[i].ymax = spt[i].y;
+			edge[i].xmin = (float)spt[i + 1].x;
+			edge[i].xmax = (float)spt[i].x;
+			if (pmax < spt[i].y)
+				pmax = spt[i].y;
+			if (pmin > spt[i + 1].y)
+				pmin = spt[i + 1].y;
+		}
+	} //1
+	for (int r = 1;r < N - 2;r++) //排序（按ymin由大到小）
+	{ //2
+		for (int q = 0;q < N - 2 - r;q++)
+		{
+			if (edge[q].ymin < edge[q + 1].ymin)
+			{
+				newedge[0] = edge[q];
+				edge[q] = edge[q + 1];
+				edge[q + 1] = newedge[0];
+			}
+		}
+	} //2
+
+	for (int scan = pmax - 1;scan > pmin;scan--) //多边形自上而下扫描求交、填充
+	{  //3
+		int b = 0;
+		k = s;
+		for (j = k;j <= N - 2;j++)    //对于某条扫描线，求与多边形的交点
+		{   //AA
+			if ((scan > edge[j].ymin) && (scan <= edge[j].ymax))
+			{  //111 
+				if (scan == edge[j].ymax)  //极大值，2个交点
+				{  //aaaa
+					if (spt[edge[j].num + 1].y < edge[j].ymax)
+					{
+						b++;
+						p[b] = (int)edge[j].xmax;
+					}
+					if (spt[edge[j].num - 1].y < edge[j].ymax)
+					{
+						b++;
+						p[b] = (int)edge[j].xmax;
+					}
+				} //aaaa
+				if ((scan > edge[j].ymin) && (scan < edge[j].ymax)) //正常求交
+				{//bbbb
+					b++;
+					p[b] = (int)(edge[j].xmax + edge[j].dx*(scan - edge[j].ymax));
+				} //bbbb
+			} //111
+			if (scan <= edge[j].ymin)  //极小值不求交，0个交点，往后
+				s = j;
+		} //AA
+		if (b > 1)   //若有交点，则进行划线填充
+		{  //BB
+			for (int u = 1;u < b;u++)
+			{
+				pDC->MoveTo(p[u], scan);
+				u++;
+				pDC->LineTo(p[u], scan);
+			}
+		} //BB
+	} //3
+}
+
 void CMFCApplication11View::ScanFill(CPoint spt[], CDC *pDC)
 {
 	int j, k, s = 0;
@@ -218,6 +333,7 @@ void CMFCApplication11View::On32772()
 
 }
 
+
 void CMFCApplication11View::SeedFill(CPoint spt[], CPoint s_point, CDC *pDC)
 {
 	CDC dc;
@@ -284,3 +400,6 @@ void CMFCApplication11View::SeedFill(CPoint spt[], CPoint s_point, CDC *pDC)
 		x = s_point.x;
 	} //3下半部分填充
 }
+
+
+

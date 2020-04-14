@@ -48,6 +48,9 @@ public:
 	void ScanFill(CPoint spt[], CDC * pDC);
 	afx_msg void On32772();
 	void SeedFill(CPoint spt[], CPoint s_point, CDC * pDC);
+	afx_msg void On32773();
+	void ScanFill2(CPoint spt[], CDC * pDC, int N);
+	
 };
 
 #ifndef _DEBUG  // MFCApplication11View.cpp 中的调试版本

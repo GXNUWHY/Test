@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFCApplication11.h">
+    <ClInclude Include="MFCApplication16.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="framework.h">
@@ -27,10 +27,10 @@
     <ClInclude Include="MainFrm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MFCApplication11Doc.h">
+    <ClInclude Include="MFCApplication16Doc.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MFCApplication11View.h">
+    <ClInclude Include="MFCApplication16View.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -39,45 +39,45 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="DRAW.h">
+    <ClInclude Include="SHOWDIA.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MFCApplication11.cpp">
+    <ClCompile Include="MFCApplication16.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MainFrm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MFCApplication11Doc.cpp">
+    <ClCompile Include="MFCApplication16Doc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MFCApplication11View.cpp">
+    <ClCompile Include="MFCApplication16View.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DRAW.cpp">
+    <ClCompile Include="SHOWDIA.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication11.rc">
+    <ResourceCompile Include="MFCApplication16.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication11.rc2">
+    <None Include="res\MFCApplication16.rc2">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication11Doc.ico">
+    <Image Include="res\MFCApplication16Doc.ico">
       <Filter>资源文件</Filter>
     </Image>
-    <Image Include="res\MFCApplication11.ico">
+    <Image Include="res\MFCApplication16.ico">
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\Toolbar.bmp">
