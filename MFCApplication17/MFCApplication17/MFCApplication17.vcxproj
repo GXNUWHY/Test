@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D5B17699-19AD-40CA-A8AD-8675D70385C3}</ProjectGuid>
+    <ProjectGuid>{AAAC44EA-5E5E-478F-8049-4ED94817F5CB}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
-    <RootNamespace>MFCApplication10</RootNamespace>
+    <RootNamespace>MFCApplication17</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -189,18 +189,18 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MFCApplication10.h" />
-    <ClInclude Include="MFCApplication10Doc.h" />
-    <ClInclude Include="MFCApplication10View.h" />
+    <ClInclude Include="MFCApplication17.h" />
+    <ClInclude Include="MFCApplication17Doc.h" />
+    <ClInclude Include="MFCApplication17View.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MFCApplication10.cpp" />
-    <ClCompile Include="MFCApplication10Doc.cpp" />
-    <ClCompile Include="MFCApplication10View.cpp" />
+    <ClCompile Include="MFCApplication17.cpp" />
+    <ClCompile Include="MFCApplication17Doc.cpp" />
+    <ClCompile Include="MFCApplication17View.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -209,14 +209,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication10.rc" />
+    <ResourceCompile Include="MFCApplication17.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication10.rc2" />
+    <None Include="res\MFCApplication17.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication10.ico" />
-    <Image Include="res\MFCApplication10Doc.ico" />
+    <Image Include="res\MFCApplication17.ico" />
+    <Image Include="res\MFCApplication17Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

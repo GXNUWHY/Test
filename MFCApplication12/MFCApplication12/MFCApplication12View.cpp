@@ -63,30 +63,6 @@ void CMFCApplication12View::OnDraw(CDC* pDC)
 	pDC->Rectangle(rt);
 }
 
-
-// CMFCApplication12View 诊断
-
-#ifdef _DEBUG
-void CMFCApplication12View::AssertValid() const
-{
-	CView::AssertValid();
-}
-
-void CMFCApplication12View::Dump(CDumpContext& dc) const
-{
-	CView::Dump(dc);
-}
-
-CMFCApplication12Doc* CMFCApplication12View::GetDocument() const // 非调试版本是内联的
-{
-	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CMFCApplication12Doc)));
-	return (CMFCApplication12Doc*)m_pDocument;
-}
-#endif //_DEBUG
-
-
-// CMFCApplication12View 消息处理程序
-
 int startx1, startx2;
 int starty1, starty2;
 void CMFCApplication12View::OnLButtonDown(UINT nFlags, CPoint point)
@@ -128,6 +104,30 @@ void CMFCApplication12View::OnLButtonUp(UINT nFlags, CPoint point)
 	mode = 0;
 	CView::OnLButtonUp(nFlags, point);
 }
+// CMFCApplication12View 诊断
+
+#ifdef _DEBUG
+void CMFCApplication12View::AssertValid() const
+{
+	CView::AssertValid();
+}
+
+void CMFCApplication12View::Dump(CDumpContext& dc) const
+{
+	CView::Dump(dc);
+}
+
+CMFCApplication12Doc* CMFCApplication12View::GetDocument() const // 非调试版本是内联的
+{
+	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CMFCApplication12Doc)));
+	return (CMFCApplication12Doc*)m_pDocument;
+}
+#endif //_DEBUG
+
+
+// CMFCApplication12View 消息处理程序
+
+
 
 
 
