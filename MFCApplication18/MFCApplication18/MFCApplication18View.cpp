@@ -80,7 +80,14 @@ void CMFCApplication18View::OnDraw(CDC* pDC)
 	ptset1[3] = CPoint(180, 230);
 	ptset1[4] = CPoint(50, 150);
 
-		/*ptset1[0]=CPoint(50,200);	ptset1[1]=CPoint(170,80);	ptset1[2]=CPoint(350,150);	ptset1[3]=CPoint(220,300);	ptset1[4]=CPoint(50,200);*/	
+	
+	/*ptset1[0]=CPoint(50,200);
+	ptset1[1]=CPoint(170,80);
+	ptset1[2]=CPoint(350,150);
+	ptset1[3]=CPoint(220,300);
+	ptset1[4]=CPoint(50,200);*/
+	
+
 
 	pDC->MoveTo(ptset1[0]);
 	for (int i = 1;i <= M0;i++)
