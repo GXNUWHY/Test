@@ -60,6 +60,11 @@ CMFCApplication23Dlg::CMFCApplication23Dlg(CWnd* pParent /*=nullptr*/)
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
+CMFCApplication23Dlg::~CMFCApplication23Dlg()
+{
+	OnBnClickedOk();
+}
+
 void CMFCApplication23Dlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);

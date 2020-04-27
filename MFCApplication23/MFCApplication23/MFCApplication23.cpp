@@ -6,6 +6,9 @@
 #include "framework.h"
 #include "MFCApplication23.h"
 #include "MFCApplication23Dlg.h"
+#include "fstream"
+#include "string"
+using namespace std;
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -77,6 +80,7 @@ BOOL CMFCApplication23App::InitInstance()
 	if (nResponse == IDOK)
 	{
 		// TODO: 在此放置处理何时用
+
 		//  “确定”来关闭对话框的代码
 	}
 	else if (nResponse == IDCANCEL)
