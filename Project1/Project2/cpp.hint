@@ -1,0 +1,2 @@
+#define PROJECT2_API __declspec(dllexport)
+#define PROJECT2_API __declspec(dllimport)
