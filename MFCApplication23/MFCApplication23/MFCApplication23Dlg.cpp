@@ -62,7 +62,7 @@ CMFCApplication23Dlg::CMFCApplication23Dlg(CWnd* pParent /*=nullptr*/)
 
 CMFCApplication23Dlg::~CMFCApplication23Dlg()
 {
-	OnBnClickedOk();
+	
 }
 
 void CMFCApplication23Dlg::DoDataExchange(CDataExchange* pDX)

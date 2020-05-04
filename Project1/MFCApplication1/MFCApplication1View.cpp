@@ -65,6 +65,24 @@ void CMFCApplication1View::OnDraw(CDC* pDC)
 
 	s.Format(_T("%d"), GetInt());
 	pDC->TextOutW(200, 200, s);
+
+	int n = 12;
+	int result = factorial(n);
+
+	if (result == -1) {
+		s.Format(_T("计算结果溢出"));
+		pDC->TextOutW(300, 300, s);
+	}
+	else {
+		s.Format(_T("%d"), result);
+		pDC->TextOutW(300, 300, s);
+	}
+	
+
+	float rad = convert(45);
+	s.Format(_T("%f"), rad);
+	pDC->TextOutW(400, 400, s);
+
 }
 
 

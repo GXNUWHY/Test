@@ -1,5 +1,6 @@
 #pragma once
-char* pchar();
+
+
 
 class F1 {
 	int a;
@@ -8,3 +9,8 @@ class F1 {
 	}
 	int getA();
 };
+int factorial(int n);
+
+float convert(float angle);
+
+char* pchar();
