@@ -73,7 +73,7 @@ void CMFCApplication18View::OnDraw(CDC* pDC)
 	CPen *old = pDC->SelectObject(&newpen);
 	pDC->Rectangle(CRect(XL, YT, XR, YB));//剪切窗口
 	CPoint ptset1[N]; //多边形端点定义及赋值
-	int M0 = 3;
+	int M0 = 4;
 	/*ptset1[0] = CPoint(50, 150);
 	ptset1[1] = CPoint(160, 120);
 	ptset1[2] = CPoint(250, 150);
@@ -87,10 +87,11 @@ void CMFCApplication18View::OnDraw(CDC* pDC)
 	ptset1[3]=CPoint(220,300);
 	ptset1[4]=CPoint(50,200);*/
 
-	ptset1[0] = CPoint(0, 150);
-	ptset1[1] = CPoint(400, -200);
-	ptset1[2] = CPoint(400, 600);
-	ptset1[3] = CPoint(0, 150);
+	ptset1[0] = CPoint(50, 50);
+	ptset1[1] = CPoint(350, 50);
+	ptset1[2] = CPoint(350, 300);
+	ptset1[3] = CPoint(50, 300);
+	ptset1[4] = CPoint(50, 50);
 	
 
 

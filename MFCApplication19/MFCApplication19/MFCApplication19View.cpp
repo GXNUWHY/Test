@@ -65,6 +65,14 @@ void CMFCApplication19View::OnDraw(CDC* pDC)
 	ply[3] = CPoint(200, 400);
 	ply[4] = CPoint(20, 200);
 
+
+	/*ply[0] = CPoint(200, 50);
+	ply[1] = CPoint(300, 20);
+	ply[2] = CPoint(400, 200);
+	ply[3] = CPoint(350, 300);
+	ply[4] = CPoint(150, 100);*/
+
+
 	CPoint p1(50, 100), p2(550, 300);
 	CPoint pl, pu;
 
