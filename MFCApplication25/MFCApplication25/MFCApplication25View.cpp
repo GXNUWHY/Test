@@ -13,6 +13,11 @@
 #include "MFCApplication25Doc.h"
 #include "MFCApplication25View.h"
 
+#include "MyClass.h"
+#include "math.h"
+#define PI  3.141926
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -47,7 +52,7 @@ BOOL CMFCApplication25View::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMFCApplication25View 绘图
 
-void CMFCApplication25View::OnDraw(CDC* /*pDC*/)
+void CMFCApplication25View::OnDraw(CDC* pDC)
 {
 	CMFCApplication25Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -55,6 +60,33 @@ void CMFCApplication25View::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+ //将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A1[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+	my1.A1[1][1] = 1;
+	my1.A1[2][2] = 1;
+	my1.A1[3][3] = 1;
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	my1.Display();
+	//OnMirrorO();//关于原点对称
+	//OnRotation();//绕原点顺时针旋转
+	//OnScaling();//比例变换
+	//OnTranslation();//平移变换
+	//OnEnlarge();//放大变换
+	//symmetry();//对称变换
+	dislocation();//错切变换
 }
 
 
@@ -80,3 +112,153 @@ CMFCApplication25Doc* CMFCApplication25View::GetDocument() const // 非调试版
 
 
 // CMFCApplication25View 消息处理程序
+
+void CMFCApplication25View::OnMirrorO()
+{
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+
+	//给图形变换矩阵赋值
+	my1.A[1][1] = -1;
+	my1.A[2][2] = -1;
+	my1.A[3][3] = 1;
+	//RedrawWindow();
+	my1.Display();
+}
+void CMFCApplication25View::OnRotation()
+{
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+	my1.A[1][1] = cos(PI * 90 / 180);//旋转90度
+	my1.A[1][2] = sin(PI * 90 / 180);
+	my1.A[2][1] = -sin(PI * 90 / 180);
+	my1.A[2][2] = cos(PI * 90 / 180);
+
+	/*my1.A[1][1] = cos(PI * 60 / 180);//旋转60度
+	my1.A[1][2] = sin(PI * 60 / 180);
+	my1.A[2][1] = -sin(PI * 60 / 180);
+	my1.A[2][2] = cos(PI * 60 / 180);*/
+
+	my1.A[3][3] = 1;
+	//RedrawWindow();
+	my1.Display();
+
+}
+void CMFCApplication25View::OnScaling()
+{
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+	my1.A[1][1] = 5;
+	my1.A[2][2] = 2;
+	my1.A[3][3] = 1;
+	//RedrawWindow();
+	my1.Display();
+}
+void CMFCApplication25View::OnTranslation()
+{
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+	my1.A[1][1] = 1;
+	my1.A[2][2] = 1;
+	my1.A[3][1] = 15;
+	my1.A[3][2] = 45;
+	my1.A[3][3] = 1;
+	//RedrawWindow();
+	my1.Display();
+}
+
+void CMFCApplication25View::OnEnlarge() {
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+	my1.A[1][1] = 3;
+	my1.A[2][2] = 3;
+	
+	my1.A[3][3] = 1;
+	//RedrawWindow();
+	my1.Display();
+}
+void CMFCApplication25View::symmetry() {
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+
+	/*my1.A[1][1] = 1;
+	my1.A[2][2] = -1;
+	my1.A[3][3] = 1;*/
+
+	my1.A[1][2] = 1;
+	my1.A[2][1] = 1;
+	my1.A[3][3] = 1;
+
+	//RedrawWindow();
+	my1.Display();
+}
+
+void CMFCApplication25View::dislocation() {
+	// TODO: Add your command handler code here
+	int i, j;
+	CMyClass my1;  //构造新的CMyClass对象
+	//将图形变换矩阵清零
+	for (i = 1;i <= 3;++i)
+	{
+		for (j = 1;j <= 3;++j)
+			my1.A[i][j] = 0;
+	}
+	//给图形变换矩阵赋值
+
+
+	my1.A[1][1] = 1;
+	my1.A[2][1] = 1;
+	my1.A[2][2] = 1;
+	my1.A[3][3] = 1;
+
+	//RedrawWindow();
+	my1.Display();
+}

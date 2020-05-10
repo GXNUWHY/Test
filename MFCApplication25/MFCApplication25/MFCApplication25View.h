@@ -15,6 +15,20 @@ protected: // 仅从序列化创建
 public:
 	CMFCApplication25Doc* GetDocument() const;
 
+	void OnMirrorO();
+
+	void OnRotation();
+
+	void OnScaling();
+
+	void OnTranslation();
+
+	void OnEnlarge();
+
+	void symmetry();
+
+	void dislocation();
+
 // 操作
 public:
 

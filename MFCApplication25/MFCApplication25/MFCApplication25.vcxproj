@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{A75BF64C-B827-438C-9909-0590A8A4AA19}</ProjectGuid>
+    <ProjectGuid>{876B1C06-2583-4B84-90A8-C0F43EEF35C0}</ProjectGuid>
     <Keyword>MFCProj</Keyword>
     <RootNamespace>MFCApplication25</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
@@ -192,6 +192,7 @@
     <ClInclude Include="MFCApplication25.h" />
     <ClInclude Include="MFCApplication25Doc.h" />
     <ClInclude Include="MFCApplication25View.h" />
+    <ClInclude Include="MyClass.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="MFCApplication25.cpp" />
     <ClCompile Include="MFCApplication25Doc.cpp" />
     <ClCompile Include="MFCApplication25View.cpp" />
+    <ClCompile Include="MyClass.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
