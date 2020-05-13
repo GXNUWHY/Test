@@ -15,6 +15,12 @@ protected: // 仅从序列化创建
 public:
 	CMFCApplication6Doc* GetDocument() const;
 
+	void OnMidpointellipse(int a, int b, int xc, int yc);
+
+	void OnMidpointellipse();
+
+	void OnMidpointellipse2(int a, int b, int xc, int yc);
+
 // 操作
 public:
 
@@ -38,7 +44,6 @@ protected:
 protected:
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnMidpointellipse();
 };
 
 #ifndef _DEBUG  // MFCApplication6View.cpp 中的调试版本

@@ -8,6 +8,7 @@
 // ATL 项目中进行定义，并允许与该项目共享文档代码。
 #ifndef SHARED_HANDLERS
 #include "MFCApplication6.h"
+#define PI 3.14
 #endif
 
 #include "MFCApplication6Doc.h"
@@ -23,7 +24,7 @@
 IMPLEMENT_DYNCREATE(CMFCApplication6View, CView)
 
 BEGIN_MESSAGE_MAP(CMFCApplication6View, CView)
-	ON_COMMAND(ID_MIDPOINTELLIPSE, &CMFCApplication6View::OnMidpointellipse)
+	//ON_COMMAND(ID_MIDPOINTELLIPSE, &CMFCApplication6View::OnMidpointellipse)
 END_MESSAGE_MAP()
 
 // CMFCApplication6View 构造/析构
@@ -48,7 +49,7 @@ BOOL CMFCApplication6View::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMFCApplication6View 绘图
 
-void CMFCApplication6View::OnDraw(CDC* /*pDC*/)
+void CMFCApplication6View::OnDraw(CDC* pDC)
 {
 	CMFCApplication6Doc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
@@ -56,6 +57,19 @@ void CMFCApplication6View::OnDraw(CDC* /*pDC*/)
 		return;
 
 	// TODO: 在此处为本机数据添加绘制代码
+	int xc, x0 = 400, a = 200, b = 100, yc, y0 = 400, angle = 0;
+
+
+	for (xc = x0 + a, yc = y0; angle <= 360; angle += 10) {
+
+		OnMidpointellipse2(a, b, xc, yc);
+		//pDC->SetPixel(xc, yc, 0);
+
+		xc = x0 + cos((float)angle / 180 * PI) * a;
+		yc = y0 + sin((float)angle / 180 * PI) * b;
+	}
+
+
 }
 
 
@@ -83,11 +97,11 @@ CMFCApplication6Doc* CMFCApplication6View::GetDocument() const // 非调试版�
 // CMFCApplication6View 消息处理程序
 
 
-void CMFCApplication6View::OnMidpointellipse()
+/*void CMFCApplication6View::OnMidpointellipse()
 {
 	// TODO: 在此添加命令处理程序代码
 	CDC* pDC = GetDC();
-	int a = 200, b = 100, xc = 300, yc = 300;
+	
 	int c = RGB(0, 0, 0);
 	double d1, d2;
 	int x, y;
@@ -129,5 +143,55 @@ void CMFCApplication6View::OnMidpointellipse()
 		pDC->SetPixel(-x + 300, y + 200, c);
 		pDC->SetPixel(x + 300, -y + 200, c);
 		pDC->SetPixel(-x + 300, -y + 200, c);
+	}
+}*/
+
+
+void CMFCApplication6View::OnMidpointellipse2(int a, int b, int xc, int yc)
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC* pDC = GetDC();
+
+	int c = RGB(0, 0, 0);
+	double d1, d2;
+	int x, y;
+	x = 0;
+	y = b;
+	d1 = b * b + a * a * (-b + 0.25);
+	pDC->SetPixel(x + xc, y + yc, c);
+	pDC->SetPixel(-x + xc, y + yc, c);
+	pDC->SetPixel(x + xc, -y + yc, c);
+	pDC->SetPixel(-x + xc, -y + yc, c);
+	while (b * b * (x + 1) < a * a * (y - 0.5)) {
+		if (d1 < 0) {
+			d1 += b * b * (2 * x + 3);
+			++x;
+		}
+		else {
+			d1 += b * b * (2 * x + 3) + a * a * (-2 * y + 2);
+			++x;
+			--y;
+		}
+		pDC->SetPixel(x + xc, y + yc, c);
+		pDC->SetPixel(-x + xc, y + yc, c);
+		pDC->SetPixel(x + xc, -y + yc, c);
+		pDC->SetPixel(-x + xc, -y + yc, c);
+	}
+
+	d2 = sqrt(b * (x + 0.5)) + a * (y - 1) - a * b;
+	while (y > 0) {
+		if (d2 < 0) {
+			d2 += b * b*(2 * x + 2) + a * a*(-2 * y + 3);
+			++x;
+			--y;
+		}
+		else {
+			d2 += a * a*(-2 * y + 3);
+			--y;
+		}
+		pDC->SetPixel(x + xc, y + yc, c);
+		pDC->SetPixel(-x + xc, y + yc, c);
+		pDC->SetPixel(x + xc, -y + yc, c);
+		pDC->SetPixel(-x + xc, -y + yc, c);
 	}
 }
