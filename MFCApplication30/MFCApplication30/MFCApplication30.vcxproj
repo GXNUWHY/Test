@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0277BC97-BD99-453C-8E49-2A7E70EA0ADC}</ProjectGuid>
-    <RootNamespace>MFCApplication29</RootNamespace>
+    <ProjectGuid>{864B922C-3ED3-41AB-B816-A156B52FF5D0}</ProjectGuid>
+    <RootNamespace>MFCApplication30</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
@@ -95,7 +95,6 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -118,7 +117,6 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -145,7 +143,6 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -172,7 +169,6 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>odbc32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -189,23 +185,15 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnlargeDlg.h" />
-    <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MFCApplication29.h" />
-    <ClInclude Include="MFCApplication29Doc.h" />
-    <ClInclude Include="MFCApplication29Set.h" />
-    <ClInclude Include="MFCApplication29View.h" />
+    <ClInclude Include="MFCApplication30.h" />
+    <ClInclude Include="MFCApplication30Dlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EnlargeDlg.cpp" />
-    <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MFCApplication29.cpp" />
-    <ClCompile Include="MFCApplication29Doc.cpp" />
-    <ClCompile Include="MFCApplication29Set.cpp" />
-    <ClCompile Include="MFCApplication29View.cpp" />
+    <ClCompile Include="MFCApplication30.cpp" />
+    <ClCompile Include="MFCApplication30Dlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -214,22 +202,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication29.rc" />
+    <ResourceCompile Include="MFCApplication30.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication29.rc2" />
+    <None Include="res\MFCApplication30.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication29.ico" />
-    <Image Include="res\MFCApplication29Doc.ico" />
-    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\MFCApplication30.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-  <ProjectExtensions>
-    <VisualStudio>
-      <UserProperties RESOURCE_FILE="MFCApplication29.rc" />
-    </VisualStudio>
-  </ProjectExtensions>
 </Project>

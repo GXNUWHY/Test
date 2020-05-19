@@ -18,7 +18,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFCApplication29.h">
+    <ClInclude Include="MFCApplication30.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCApplication30Dlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -27,66 +30,33 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MainFrm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MFCApplication29Doc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MFCApplication29View.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MFCApplication29Set.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="EnlargeDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MFCApplication29.cpp">
+    <ClCompile Include="MFCApplication30.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCApplication30Dlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MainFrm.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MFCApplication29Doc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MFCApplication29View.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MFCApplication29Set.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="EnlargeDlg.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication29.rc">
+    <ResourceCompile Include="MFCApplication30.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication29.rc2">
+    <None Include="res\MFCApplication30.rc2">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication29Doc.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="res\MFCApplication29.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="res\Toolbar.bmp">
+    <Image Include="res\MFCApplication30.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

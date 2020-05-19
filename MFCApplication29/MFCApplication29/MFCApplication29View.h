@@ -54,6 +54,8 @@ public:
 	afx_msg void OnRecordPrev();
 	afx_msg void OnRecordNext();
 	afx_msg void OnRecordLast();
+	afx_msg void OnPaint();
+	afx_msg void OnEnlarge();
 };
 
 #ifndef _DEBUG  // MFCApplication29View.cpp 中的调试版本

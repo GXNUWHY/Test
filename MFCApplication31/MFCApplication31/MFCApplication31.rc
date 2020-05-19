@@ -52,7 +52,7 @@ BEGIN
     "\r\n"
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
-    "#include ""res\\MFCApplication29.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""res\\MFCApplication31.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
     "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
     "#include ""l.CHS\\afxdb.rc""        // 数据库资源\r\n"
     "#endif\r\n"
@@ -69,9 +69,9 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\MFCApplication29.ico"
+IDR_MAINFRAME           ICON                    "res\\MFCApplication31.ico"
 
-IDR_MFCApplication2TYPE ICON                    "res\\MFCApplication29Doc.ico"
+IDR_MFCApplication3TYPE ICON                    "res\\MFCApplication31Doc.ico"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -134,11 +134,10 @@ BEGIN
     BEGIN
         MENUITEM "工具栏(&T)",                     ID_VIEW_TOOLBAR
         MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
-        MENUITEM "放大显示",                        ID_ENLARGE
     END
     POPUP "帮助(&H)"
     BEGIN
-        MENUITEM "关于 MFCApplication29(&A)...",  ID_APP_ABOUT
+        MENUITEM "关于 MFCApplication31(&A)...",  ID_APP_ABOUT
     END
 END
 
@@ -170,31 +169,33 @@ END
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "关于 MFCApplication29"
+CAPTION "关于 MFCApplication31"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
-    LTEXT           "MFCApplication29，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "MFCApplication31，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2020",IDC_STATIC,42,26,114,8
     DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
 END
 
-IDD_MFCAPPLICATION29_FORM DIALOGEX 0, 0, 320, 200
+IDD_MFCAPPLICATION31_FORM DIALOGEX 0, 0, 320, 200
 STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    EDITTEXT        IDC_EDIT1,34,53,80,14,ES_AUTOHSCROLL
-    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,133,57,120,55
+    EDITTEXT        IDC_EDIT1,28,59,83,28,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "增加",IDC_BUTTON1,157,39,50,14
+    PUSHBUTTON      "修改",IDC_BUTTON2,156,67,50,14
+    PUSHBUTTON      "删除",IDC_BUTTON3,156,94,50,14
 END
 
-IDD_DIALOG1 DIALOGEX 0, 0, 487, 249
+IDD_DIALOG1 DIALOGEX 0, 0, 310, 177
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Dialog"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    DEFPUSHBUTTON   "确定",IDOK,199,228,50,14
-    PUSHBUTTON      "取消",IDCANCEL,430,228,50,14
-    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,7,7,473,218
+    DEFPUSHBUTTON   "确定",IDOK,199,156,50,14
+    PUSHBUTTON      "取消",IDCANCEL,253,156,50,14
+    EDITTEXT        IDC_EDIT1,28,45,40,14,ES_AUTOHSCROLL
 END
 
 
@@ -221,11 +222,11 @@ BEGIN
         BLOCK "080404B0"
         BEGIN
             VALUE "CompanyName", "TODO: <公司名>"
-            VALUE "FileDescription", "MFCApplication29"
+            VALUE "FileDescription", "MFCApplication31"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "MFCApplication29.exe"
+            VALUE "InternalName", "MFCApplication31.exe"
             VALUE "LegalCopyright", "TODO:  (C) <公司名>。  保留所有权利。"
-            VALUE "OriginalFilename", "MFCApplication29.exe"
+            VALUE "OriginalFilename", "MFCApplication31.exe"
             VALUE "ProductName", "TODO: <产品名>"
             VALUE "ProductVersion", "1.0.0.1"
         END
@@ -253,7 +254,7 @@ BEGIN
         BOTTOMMARGIN, 55
     END
 
-    IDD_MFCAPPLICATION29_FORM, DIALOG
+    IDD_MFCAPPLICATION31_FORM, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 313
@@ -264,9 +265,9 @@ BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 480
+        RIGHTMARGIN, 303
         TOPMARGIN, 7
-        BOTTOMMARGIN, 242
+        BOTTOMMARGIN, 170
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -277,7 +278,7 @@ END
 // AFX_DIALOG_LAYOUT
 //
 
-IDD_MFCAPPLICATION29_FORM AFX_DIALOG_LAYOUT
+IDD_MFCAPPLICATION31_FORM AFX_DIALOG_LAYOUT
 BEGIN
     0
 END
@@ -301,12 +302,12 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_MAINFRAME           "MFCApplication29\n\nMFCApplication2\n\n\nMFCApplication29.Document\nMFCApplication29.Document"
+    IDR_MAINFRAME           "MFCApplication31\n\nMFCApplication3\n\n\nMFCApplication31.Document\nMFCApplication31.Document"
 END
 
 STRINGTABLE
 BEGIN
-    AFX_IDS_APP_TITLE       "MFCApplication29"
+    AFX_IDS_APP_TITLE       "MFCApplication31"
     AFX_IDS_IDLEMESSAGE     "就绪"
 END
 
@@ -425,7 +426,7 @@ END
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
-#include "res\MFCApplication29.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "res\MFCApplication31.rc2"  // 非 Microsoft Visual C++ 编辑的资源
 #include "l.CHS\afxres.rc"      // 标准组件
 #include "l.CHS\afxdb.rc"        // 数据库资源
 #endif

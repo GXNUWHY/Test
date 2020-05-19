@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0277BC97-BD99-453C-8E49-2A7E70EA0ADC}</ProjectGuid>
-    <RootNamespace>MFCApplication29</RootNamespace>
+    <ProjectGuid>{B89A37D3-3A51-40F3-BC38-933C711DA910}</ProjectGuid>
+    <RootNamespace>MFCApplication31</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <Keyword>MFCProj</Keyword>
   </PropertyGroup>
@@ -189,23 +189,23 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnlargeDlg.h" />
+    <ClInclude Include="AddDlg.h" />
     <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MFCApplication29.h" />
-    <ClInclude Include="MFCApplication29Doc.h" />
-    <ClInclude Include="MFCApplication29Set.h" />
-    <ClInclude Include="MFCApplication29View.h" />
+    <ClInclude Include="MFCApplication31.h" />
+    <ClInclude Include="MFCApplication31Doc.h" />
+    <ClInclude Include="MFCApplication31Set.h" />
+    <ClInclude Include="MFCApplication31View.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EnlargeDlg.cpp" />
+    <ClCompile Include="AddDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MFCApplication29.cpp" />
-    <ClCompile Include="MFCApplication29Doc.cpp" />
-    <ClCompile Include="MFCApplication29Set.cpp" />
-    <ClCompile Include="MFCApplication29View.cpp" />
+    <ClCompile Include="MFCApplication31.cpp" />
+    <ClCompile Include="MFCApplication31Doc.cpp" />
+    <ClCompile Include="MFCApplication31Set.cpp" />
+    <ClCompile Include="MFCApplication31View.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -214,14 +214,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication29.rc" />
+    <ResourceCompile Include="MFCApplication31.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication29.rc2" />
+    <None Include="res\MFCApplication31.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication29.ico" />
-    <Image Include="res\MFCApplication29Doc.ico" />
+    <Image Include="res\MFCApplication31.ico" />
+    <Image Include="res\MFCApplication31Doc.ico" />
     <Image Include="res\Toolbar.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
@@ -229,7 +229,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="MFCApplication29.rc" />
+      <UserProperties RESOURCE_FILE="MFCApplication31.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

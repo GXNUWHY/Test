@@ -12,6 +12,7 @@
 #include "MFCApplication29Set.h"
 #include "MFCApplication29Doc.h"
 #include "MFCApplication29View.h"
+#include "EnlargeDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -27,6 +28,8 @@ BEGIN_MESSAGE_MAP(CMFCApplication29View, CRecordView)
 	ON_COMMAND(ID_RECORD_PREV, &CMFCApplication29View::OnRecordPrev)
 	ON_COMMAND(ID_RECORD_NEXT, &CMFCApplication29View::OnRecordNext)
 	ON_COMMAND(ID_RECORD_LAST, &CMFCApplication29View::OnRecordLast)
+	ON_WM_PAINT()
+	ON_COMMAND(ID_ENLARGE, &CMFCApplication29View::OnEnlarge)
 END_MESSAGE_MAP()
 
 // CMFCApplication29View 构造/析构
@@ -68,8 +71,6 @@ void CMFCApplication29View::OnInitialUpdate()
 	CRecordView::OnInitialUpdate();
 
 	GetDlgItem(IDC_STATIC)->GetClientRect(&picRect);
-	
-
 
 }
 
@@ -145,12 +146,12 @@ void CMFCApplication29View::OnRecordFirst()
 	//CString name = picname;
 	//GetDlgItemText(IDC_STATIC, name);
 
-	CString name = m_pSet->column1;
-	CString filepath = path + name;
+	//CString name = m_pSet->column1;
+	//CString filepath = path + name;
 
 	InvalidateRect(picRect);
-	draw_pic(filepath);
-
+	//draw_pic(filepath);
+	
 }
 
 
@@ -163,10 +164,10 @@ void CMFCApplication29View::OnRecordPrev()
 	}
 	UpdateData(false);
 
-	CString name = m_pSet->column1;
-	CString filepath = path + name;
+	//CString name = m_pSet->column1;
+	//CString filepath = path + name;
 	InvalidateRect(picRect);
-	draw_pic(filepath);
+	//draw_pic(filepath);
 }
 
 
@@ -179,10 +180,10 @@ void CMFCApplication29View::OnRecordNext()
 	}
 	UpdateData(false);
 
-	CString name = m_pSet->column1;
-	CString filepath = path + name;
+	//CString name = m_pSet->column1;
+	//CString filepath = path + name;
 	InvalidateRect(picRect);
-	draw_pic(filepath);
+	//draw_pic(filepath);
 }
 
 
@@ -192,8 +193,37 @@ void CMFCApplication29View::OnRecordLast()
 	m_pSet->MoveLast();
 	UpdateData(false);
 
+	//CString name = m_pSet->column1;
+	//CString filepath = path + name;
+	InvalidateRect(picRect);
+	//draw_pic(filepath);
+}
+
+
+void CMFCApplication29View::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+					   // TODO: 在此处添加消息处理程序代码
+					   // 不为绘图消息调用 CRecordView::OnPaint()
 	CString name = m_pSet->column1;
 	CString filepath = path + name;
-	InvalidateRect(picRect);
+	//InvalidateRect(picRect);
 	draw_pic(filepath);
+
+}
+
+
+void CMFCApplication29View::OnEnlarge()
+{
+	// TODO: 在此添加命令处理程序代码
+	EnlargeDlg Enlarge;
+
+	CString name = m_pSet->column1;
+	CString filepath = path + name;
+
+	Enlarge.filepath = filepath;
+
+	if (Enlarge.DoModal() == IDOK) {
+
+	}
 }
