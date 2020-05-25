@@ -189,21 +189,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChangeDlg.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MFCApplication27.h" />
     <ClInclude Include="MFCApplication27Doc.h" />
     <ClInclude Include="MFCApplication27Set.h" />
     <ClInclude Include="MFCApplication27View.h" />
+    <ClInclude Include="NewDlg.h" />
+    <ClInclude Include="OrderDlg.h" />
+    <ClInclude Include="RecordSet.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SearchDlg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChangeDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="MFCApplication27.cpp" />
     <ClCompile Include="MFCApplication27Doc.cpp" />
     <ClCompile Include="MFCApplication27Set.cpp" />
     <ClCompile Include="MFCApplication27View.cpp" />
+    <ClCompile Include="NewDlg.cpp" />
+    <ClCompile Include="OrderDlg.cpp" />
+    <ClCompile Include="RecordSet.cpp" />
+    <ClCompile Include="SearchDlg.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

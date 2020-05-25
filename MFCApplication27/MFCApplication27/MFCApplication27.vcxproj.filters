@@ -42,6 +42,21 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SearchDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="NewDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCApplication27.cpp">
@@ -60,6 +75,21 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MFCApplication27Set.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NewDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

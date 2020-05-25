@@ -12,6 +12,11 @@
 #include "MFCApplication27Set.h"
 #include "MFCApplication27Doc.h"
 #include "MFCApplication27View.h"
+#include "SearchDlg.h"
+#include "OrderDlg.h"
+#include "NewDlg.h"
+#include "ChangeDlg.h"
+#include "RecordSet.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -27,6 +32,12 @@ BEGIN_MESSAGE_MAP(CMFCApplication27View, CRecordView)
 	ON_WM_PAINT()
 	ON_COMMAND(ID_RECORD_NEXT, &CMFCApplication27View::OnRecordNext)
 	ON_COMMAND(ID_RECORD_PREV, &CMFCApplication27View::OnRecordPrev)
+	ON_COMMAND(ID_SEARCH, &CMFCApplication27View::OnSearch)
+	ON_BN_CLICKED(IDC_BUTTON2, &CMFCApplication27View::OnBnClickedButton2)
+	ON_COMMAND(ID_SORT, &CMFCApplication27View::OnSort)
+	ON_COMMAND(ID_NEW, &CMFCApplication27View::OnNew)
+	ON_COMMAND(ID_CHANGE, &CMFCApplication27View::OnChange)
+	ON_COMMAND(ID_FILTER, &CMFCApplication27View::OnFilter)
 END_MESSAGE_MAP()
 
 // CMFCApplication27View 构造/析构
@@ -74,6 +85,8 @@ void CMFCApplication27View::OnInitialUpdate()
 	m_pSet = &GetDocument()->m_MFCApplication27Set;
 	CRecordView::OnInitialUpdate();
 	GetDlgItem(IDC_STATIC)->GetClientRect(&picRect);
+
+	m_pSet->m_strFilter = "SELECT *  FROM Table_2";
 }
 
 
@@ -167,4 +180,143 @@ void CMFCApplication27View::OnRecordPrev()
 	}
 	UpdateData(false);
 	InvalidateRect(picRect);
+}
+
+
+void CMFCApplication27View::OnSearch()
+{
+	// TODO: 在此添加命令处理程序代码
+	SearchDlg sea;
+	CString where;
+	if (sea.DoModal() == IDOK) {
+		where = sea.where;
+	}
+
+	m_pSet->m_strFilter = where;
+	m_pSet->Requery();
+	m_pSet->MoveFirst();
+}
+
+
+void CMFCApplication27View::OnBnClickedButton2()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	m_pSet->m_strFilter = _T("");
+	m_pSet->Requery();
+}
+
+
+void CMFCApplication27View::OnSort()
+{
+	// TODO: 在此添加命令处理程序代码
+	CDC *pDC = GetDC();
+	OrderDlg ord;
+	CString order;
+	CString temp;
+	if (ord.DoModal() == IDOK) {
+		order = ord.order;
+	}
+
+	m_pSet->m_strFilter = _T("");
+	m_pSet->m_strSort = order;
+	m_pSet->Requery();
+
+}
+
+
+void CMFCApplication27View::OnNew()
+{
+	// TODO: 在此添加命令处理程序代码
+	NewDlg newdlg;
+	//CString number, name, age, picpath;
+	if (newdlg.DoModal() == IDOK) {
+		m_pSet->AddNew();
+
+		m_pSet->m_number = newdlg.number;
+		m_pSet->m_name = newdlg.name;
+		m_pSet->m_age = newdlg.age;
+		m_pSet->m_picpath = newdlg.picapth;
+
+		m_pSet->Update();
+	}
+	UpdateData(false);
+	
+}
+
+
+void CMFCApplication27View::OnChange()
+{
+	// TODO: 在此添加命令处理程序代码
+	ChangeDlg change;
+
+	//m_pSet->GetFieldValue((short)1, change.number);
+	//m_pSet->GetFieldValue(short(1), change.name);
+	//m_pSet->GetFieldValue(short(2), change.age);
+	//m_pSet->GetFieldValue(short(3), change.picpath);
+
+	GetDlgItemText(IDC_EDIT1, change.number);
+	GetDlgItemText(IDC_EDIT2, change.name);
+	GetDlgItemText(IDC_EDIT3, change.age);
+	GetDlgItemText(IDC_EDIT4, change.picpath);
+
+	if (change.DoModal() == IDOK) {
+		
+		m_pSet->Edit();
+
+		m_pSet->m_number = change.number;
+		m_pSet->m_name = change.name;
+		m_pSet->m_age = change.age;
+		m_pSet->m_picpath = change.picpath;
+
+		m_pSet->Update();
+	}
+	UpdateData(false);
+}
+
+
+void CMFCApplication27View::OnFilter()
+{
+	// TODO: 在此添加命令处理程序代码
+	int fieldnum;
+	fieldnum = m_pSet->GetODBCFieldCount();
+	CString s;
+
+	RecordSet rec;
+	
+
+	m_pSet->MoveFirst();
+	while (!m_pSet->IsEOF()) {
+
+		CString a, temp;
+		for (int i = 0; i <= fieldnum + 1; ++i) {
+			//m_pSet->GetFieldValue(short(i), temp);
+			//a = a + temp;
+		}
+		/*GetDlgItemText(IDC_EDIT1, temp);
+		a = a + temp;
+		GetDlgItemText(IDC_EDIT2, temp);
+		a = a + temp;
+		GetDlgItemText(IDC_EDIT3, temp);
+		a = a + temp;
+		GetDlgItemText(IDC_EDIT4, temp);
+		a = a + temp;*/
+
+		temp = m_pSet->m_number;
+		a = a + temp;
+		temp = m_pSet->m_name;
+		a = a + temp;
+		temp = m_pSet->m_age;
+		a = a + temp;
+		temp = m_pSet->m_picpath;
+		a = a + temp;
+
+		crecord.Add(a);
+		m_pSet->MoveNext();
+	}
+	rec.fieldnum = fieldnum;
+
+	rec.recordarray.Copy(crecord);
+	if (rec.DoModal() == IDOK) {
+
+	}
 }

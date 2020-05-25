@@ -25,7 +25,7 @@ public:
 // 操作
 public:
 	CRect picRect;
-
+	CArray<CString, CString&> crecord;
 // 重写
 public:
 	virtual CRecordset* OnGetRecordset();
@@ -56,6 +56,12 @@ public:
 	afx_msg void OnPaint();
 	afx_msg void OnRecordNext();
 	afx_msg void OnRecordPrev();
+	afx_msg void OnSearch();
+	afx_msg void OnBnClickedButton2();
+	afx_msg void OnSort();
+	afx_msg void OnNew();
+	afx_msg void OnChange();
+	afx_msg void OnFilter();
 };
 
 #ifndef _DEBUG  // MFCApplication27View.cpp 中的调试版本
